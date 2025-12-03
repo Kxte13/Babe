@@ -7,21 +7,6 @@ const popupClose = document.getElementById('popupClose');
 const pwInput = document.getElementById('pw');
 const showHint = document.getElementById('showHint');
 const hintText = document.getElementById('hint');
-    
-    
-    form.addEventListener('submit', (e) => {
-    e.preventDefault();   
-    
-    if (pwInput === '171125') {
-    // ไปหน้าอื่น หรือแสดงเนื้อหาที่ต้องการ
-    localStorage.setItem('authenticated', 'true');
-    window.location.href = 'page1.html';
-    // document.body.innerHTML = '<h2 style="color:var(--text);text-align:center;margin-top:40vh">ยินดีต้อนรับ — รหัสถูกต้อง</h2>';
-    } else {
-    popup.style.display = 'flex';
-    pwInput.value = '';
-    }
-    });
 
     function closePopup() {
       popup.style.display = 'none';
