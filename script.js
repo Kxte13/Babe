@@ -17,7 +17,7 @@ const hintText = document.getElementById('hint');
         e.preventDefault();
         if (pwInput.value === '12') {
         localStorage.setItem('authenticated', 'true');
-        window.location.href = 'page1.html';
+        window.location.href = 'page.html';
         } else {
         popup.style.display = 'flex';
         pwInput.value = '';
