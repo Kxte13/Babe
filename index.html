@@ -1,0 +1,42 @@
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'CoolRegularScript';
+        src: url('font/font1.ttf') format('truetype');
+      }
+    </style>
+<title>愛你喲</title>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<h1>寶貝, 快點輸入密碼嘛💗</h1>
+<form id="pwForm">
+<label for="pw">密碼</label>
+<div class="input-hint-wrapper">
+    <input id="pw" name="password" type="password" autocomplete="current-password" required>
+    <button class="btn" type="button" id="showHint">提示✨</button>
+  </div>
+  <div id="hint" class="hint-text">小提示 : 我們的初次見面...💖</div>
+<button class="btn" type="submit">開始吧！</button>
+<div class="msg" id="msg"></div>
+</form>
+</div>
+</div>
+
+<div id="popup" class="popup-overlay" style="display:none;">
+<div class="popup-box">
+<h3>阿阿阿!!</h3>
+<p>寶寶, 怎麼連密碼都不知道啦～？😕</p>
+<button id="popupClose">關</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

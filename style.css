@@ -1,0 +1,137 @@
+:root {
+  --bg: #f0aac5;
+  --card: #f3aaf3;
+  --accent: #eb8abb;
+  --text: #7c0d0d;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "CoolRegularScript", serif;
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+}
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(238, 127, 136, 0.6);
+  width: 320px;
+  color: var(--text);
+}
+h1 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+label {
+  font-size: 13px;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 3px solid rgba(235, 75, 75, 0.06);
+  background: transparent;
+  color: var(--text);
+}
+.hint-text {
+  font-size: 14px;
+  color: #a33;
+  margin-top: 6px;
+  display: none;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+.msg {
+  margin-top: 12px;
+  font-size: 13px;
+  min-height: 18px;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+.popup-box {
+  background: #ffc3d7;
+  color: #000;
+  padding: 22px 28px;
+  border-radius: 14px;
+  width: 260px;
+  text-align: center;
+  animation: pop 0.25s ease;
+}
+#popupClose {
+  margin-top: 15px;
+  padding: 8px 18px;
+  border: none;
+  background: #e0719c;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@keyframes pop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.input-hint-wrapper {
+  display: flex;
+  align-items: center; /* ปุ่มอยู่กลางแนวตั้งกับ input */
+  gap: 8px; /* ระยะห่างระหว่าง input กับปุ่ม */
+  margin-bottom: 6px; /* ให้ใกล้ hint-text */
+}
+
+/* ปรับ input ใน wrapper */
+.input-hint-wrapper input[type="password"] {
+  flex: 1; /* ให้ input ขยายเต็มพื้นที่ที่เหลือ */
+  margin: 0; /* ลบ margin-top, margin-bottom เดิม */
+  padding: 10px; /* ยังคง padding เดิม */
+  border-radius: 8px;
+  border: 3px solid rgba(235, 75, 75, 0.06);
+  background: transparent;
+  color: var(--text);
+}
+
+/* ปรับปุ่ม hint ให้ไม่เต็ม width */
+.input-hint-wrapper button#showHint {
+  width: auto; /* ปุ่มมีความกว้างพอดีข้อความ */
+  padding: 10px 12px;
+}
