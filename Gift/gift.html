@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/text.css" />
+    <link rel="stylesheet" href="css/hidden.css" />
+    <link rel="stylesheet" href="css/card.css" />
+    <link rel="stylesheet" href="css/split.css" />
+    <link rel="stylesheet" href="css/mail.css" />
+    <title>寶寶，愛妳喲</title>
+    <link rel="icon" type="image/png" href="img/heart.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "CoolRegularScript";
+        src: url("../font/font1.ttf") format("truetype");
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../page.html" class="home-fixed">
+      <img src="../img/home.png" alt="Home" class="home-icon" />
+    </a>
+    <div class="content">
+      <div class="aurora-box">
+        <h1 class="aurora">
+          <span class="time" id="time"></span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <h2 id="titleDisplay">倒數計時名稱 ⏳✨</h2>
+      <div class="timeRow">
+        <h2 id="countdownText" style="margin-top: 10px">--:--:--</h2>
+
+        <button
+          id="toggleBtn"
+          style="
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 8px;
+            background: url('../img/count.png') no-repeat center/contain;
+            cursor: pointer;
+          "
+        ></button>
+      </div>
+
+      <!-- ส่วนนี้จะถูกซ่อน -->
+      <div
+        id="configBox"
+        style="
+          margin-top: 15px;
+          padding: 15px;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          background: #fff;
+          display: none;
+          transition: 0.3s;
+        "
+      >
+        <input
+          type="text"
+          id="titleInput"
+          placeholder="倒數計時名稱..."
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-bottom: 10px;
+            display: block;
+          "
+        />
+
+        <input
+          type="date"
+          id="datePicker"
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            display: block;
+            margin-bottom: 10px;
+          "
+        />
+
+        <button
+          id="setBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #eb8abb;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          儲存 💾
+        </button>
+        <button
+          id="resetBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6b6b;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          重設 🔄
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>寶寶 愛你喲 💗</h1>
+    </div>
+
+    <div class="question-container container">
+      <video
+        class="local-gif"
+        src="img/chiikawa-hmm.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      <h2 class="question">寶寶愛我嗎？</h2>
+      <div class="button-container">
+        <button class="yes-btn btn js-yes-btn">Yes</button>
+        <button class="no-btn btn js-no-btn">No</button>
+      </div>
+    </div>
+
+    <div class="result-container container">
+      <video
+        class="gif-result"
+        src="img/chiikawa-usagi.mp4"
+        autoplay
+        loop
+      ></video>
+      <h2>嘿嘿 我知道呀 😍</h2>
+      <!-- text.css -->
+      <h1>
+        我也是啊 寶寶...我
+        <span class="dropping-texts">
+          <div>真的</div>
+          <div>真的真的</div>
+          <div>真的真的真的</div>
+          <div>真的真的真的真的</div>
+          <div>真的真的真的真的真的</div>
+          <div>愛你喲</div>
+        </span>
+      </h1>
+    </div>
+
+    <div class="result-container2 container">
+      <video class="gif-result" src="img/chiikawa-ya.mp4" autoplay loop></video>
+      <section>
+        <p>我有個小秘密要偷偷告訴你喔~</p>
+        <ul class="code">
+          <li tabindex="0" class="digit">
+            <span>我</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>打算</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>一直</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>愛</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>你</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>到</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>永遠</span>
+          </li>
+          <li tabindex="0" class="digit">
+            <span>呀.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="result-container3 container">
+      <!-- card.css -->
+      <div class="wrap animate pop">
+        <div class="overlay">
+          <div class="overlay-content animate slide-left delay-2">
+            <h1 class="animate slide-left pop delay-4">親愛的楊泓毅~</h1>
+            <p
+              class="animate slide-left pop delay-5"
+              style="color: white; margin-bottom: 2.5rem"
+            >
+              愛你喲,<em>我的寶貝</em>
+            </p>
+          </div>
+          <div class="image-content animate slide delay-5"></div>
+          <div class="dots animate">
+            <div class="dot animate slide-up delay-6"></div>
+            <div class="dot animate slide-up delay-7"></div>
+            <div class="dot animate slide-up delay-8"></div>
+          </div>
+        </div>
+        <div class="text">
+          <p>
+            <img class="inset" src="img/chiikawa-love.png" alt="" /><em
+              >寶寶～我愛你喔！</em
+            >我以前說過為什麼愛你, 但我想再說一次, 因為你總是喜歡問我.
+            我之所以愛你, 是因為有你在身邊讓我好幸福. 你既可愛又體貼,
+            我和你在一起的每一刻都超開心的～如果有時候你撒嬌或者像小孩子一樣任性也沒關係啦.
+            我告訴過你,我不是不喜歡小孩, 只是不喜歡沒有道理的任性而已～.
+          </p>
+          <p>
+            我之前說過, 總有一天會有人改變, 但那並不是說我以後就不愛你了.
+            其實我只是希望你不要說「你會永遠愛我」, 因為未來的事情誰都說不準,
+            你也有可能哪一天改變心意. 而我卻會一直記得你說過的每一句話.
+            你只要每天都用心地愛我, 就像我每天都用心地愛你一樣, 那就夠了.
+          </p>
+          <p>
+            最後我想說的是, 我希望有一天我們能真正地在一起.
+            我想每天醒來第一個看到的就是你, 想親你, 抱你,
+            想和你一起做所有的事情, 陪你過每一個節日. 如果我們能一直在一起,
+            我會非常幸福. 我不知道「永遠」是不是真的存在,
+            但我知道的是——我真心希望能一直擁有你. 我愛你
+          </p>
+          <img class="tree" src="img/chiikawa-heart.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="result-container4 container">
+      <div class="card-wrapper">
+        <div class="card-flip-container">
+          <div class="card-flip card-flip-left">
+            <div class="card-front card-front-left">
+              <div class="card-circle"></div>
+            </div>
+            <div class="card-back card-back-left">
+              <img src="img/left.png" />
+            </div>
+          </div>
+        </div>
+        <div class="card-flip-container">
+          <div class="card-flip card-flip-right">
+            <div class="card-front card-front-right">
+              <div class="card-circle"></div>
+            </div>
+            <div class="card-back card-back-right">
+              <img src="img/right.PNG" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-wrapper">
+        <button class="open-letter-btn">寶寶點這裡</button>
+        <div class="envelope" aria-hidden="false">
+          <div class="flap" aria-hidden="true"></div>
+          <div class="letter">
+            <p>
+              我想了一段時間, 原本我想 12 月 25 日就去, 但因為請假有些調整,
+              我想給你一個驚喜的計畫沒辦法實現.
+            </p>
+            <p>
+              一開始我去問主管請假, 他說要先問人事部. 人事部說有些限制, 只能選
+              12 月 27 日到 1 月 1 日, 或者 12 月 31 日到 1 月 5
+              日.當時我有點難過, 因為這樣只能待六天, 我真的好想多陪你.
+            </p>
+            <p>
+              後來我又跟主管商量, 他說沒問題, 可以讓我請假. 所以我就決定 12 月
+              28 日到 1 月 4 日去找你啦.
+            </p>
+            <p>好期待見到你！我愛你喔 💗</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cssload-main">
+      <div class="cssload-heart">
+        <span class="cssload-heartL"></span>
+        <span class="cssload-heartR"></span>
+        <span class="cssload-square"></span>
+      </div>
+      <div class="cssload-shadow"></div>
+    </div>
+    <script src="js/button.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const resultContainers = document.querySelectorAll(
+          ".result-container, .result-container2, .result-container3, .result-container4"
+        );
+        const heartLoader = document.querySelector(".cssload-main");
+
+        const messages = [
+          "寶寶, 你準備好要看看我為你準備的小禮物了嗎?",
+          "我有一個小驚喜要給你哦～",
+          "你想不想先猜猜看是什麼呢?",
+          "快點, 我迫不及待想讓你看到啦！",
+          "哈哈, 你也準備好了嗎?",
+          "好啦, 寶寶, 看這個～",
+        ];
+
+        const videos = [
+          "img/chiikawa1.mp4",
+          "img/chiikawa2.mp4",
+          "img/chiikawa3.mp4",
+          "img/chiikawa4.mp4",
+          "img/chiikawa5.mp4",
+          "img/chiikawa6.mp4",
+        ];
+
+        const videoMessages = [
+          "哈哈～ 我有事要跟你說～先賣個關子",
+          "呵呵～ 嘿，你猜猜我在想什麼",
+          "嘿嘿～ 等一下，我先留個小秘密",
+          "哈哈哈～有驚喜要告訴你～先不說",
+          "嘻嘻嘻～ 嘘～先賣個小謎題給你",
+          "嗚哈哈～ 好啦...好啦!",
+        ];
+
+        let clickCount = 0;
+
+        const videoWrapper = document.createElement("div");
+        videoWrapper.style.width = "100%";
+        videoWrapper.style.display = "flex";
+        videoWrapper.style.justifyContent = "center";
+        videoWrapper.style.alignItems = "center";
+        videoWrapper.style.marginTop = "20px";
+        videoWrapper.style.marginBottom = "20px";
+        videoWrapper.style.opacity = "0";
+        videoWrapper.style.transition = "opacity 0.3s";
+        videoWrapper.style.position = "relative";
+
+        const container3Video = document.createElement("video");
+        container3Video.style.display = "none";
+        container3Video.style.width = "500px";
+        container3Video.style.height = "500px";
+        container3Video.style.objectFit = "cover";
+        container3Video.style.opacity = "0";
+        container3Video.style.transition = "opacity 0.5s";
+        container3Video.muted = true;
+        container3Video.loop = true;
+
+        const videoText = document.createElement("div");
+        videoText.style.position = "absolute";
+        videoText.style.color = "#000";
+        videoText.style.fontSize = "24px";
+        videoText.style.fontWeight = "bold";
+        videoText.style.textAlign = "center";
+        videoText.style.width = "100%";
+        videoText.style.bottom = "500px";
+        videoText.style.textShadow = "2px 2px 5px rgba(0,0,0,0.7)";
+        videoText.style.opacity = "0";
+        videoText.style.transition = "opacity 0.5s";
+
+        videoWrapper.appendChild(container3Video);
+        videoWrapper.appendChild(videoText);
+
+        const container3 = resultContainers[2];
+        container3.appendChild(videoWrapper);
+
+        resultContainers.forEach((c) => (c.style.display = "none"));
+
+        function showCustomAlert(message, callback) {
+          let overlay = document.getElementById("customAlert");
+          if (!overlay) {
+            overlay = document.createElement("div");
+            overlay.id = "customAlert";
+            overlay.style.position = "fixed";
+            overlay.style.top = "0";
+            overlay.style.left = "0";
+            overlay.style.width = "100%";
+            overlay.style.height = "100%";
+            overlay.style.background = "rgba(0,0,0,0.45)";
+            overlay.style.display = "flex";
+            overlay.style.justifyContent = "center";
+            overlay.style.alignItems = "center";
+            overlay.style.zIndex = "9999";
+
+            const box = document.createElement("div");
+            box.style.background = "#fff";
+            box.style.padding = "30px 25px";
+            box.style.borderRadius = "15px";
+            box.style.width = "330px";
+            box.style.textAlign = "center";
+            box.style.boxShadow = "0 0 20px rgba(0,0,0,0.25)";
+            box.style.animation = "fadeIn 0.3s ease";
+            overlay.appendChild(box);
+
+            const text = document.createElement("div");
+            text.id = "customAlertText";
+            text.style.fontSize = "18px";
+            text.style.color = "#333";
+            text.style.marginBottom = "18px";
+            box.appendChild(text);
+
+            const btn = document.createElement("button");
+            btn.id = "customAlertBtn";
+            btn.textContent = "OK";
+            btn.style.background = "#ff8aa6";
+            btn.style.border = "none";
+            btn.style.padding = "10px 25px";
+            btn.style.fontSize = "16px";
+            btn.style.color = "#fff";
+            btn.style.borderRadius = "10px";
+            btn.style.cursor = "pointer";
+            btn.onmouseover = () => (btn.style.opacity = "0.9");
+            btn.onmouseout = () => (btn.style.opacity = "1");
+            box.appendChild(btn);
+
+            document.body.appendChild(overlay);
+          }
+
+          document.getElementById("customAlertText").textContent = message;
+          overlay.style.display = "flex";
+
+          document.getElementById("customAlertBtn").onclick = () => {
+            overlay.style.display = "none";
+            if (callback) callback();
+          };
+        }
+
+        resultContainers.forEach((container, index) => {
+          if (index < resultContainers.length - 1) {
+            let btnContainer = container.querySelector(".button-container");
+            if (!btnContainer) {
+              btnContainer = document.createElement("div");
+              btnContainer.classList.add("button-container");
+              container.appendChild(btnContainer);
+            }
+
+            const nextBtn = document.createElement("button");
+            nextBtn.textContent = "下一個";
+            nextBtn.classList.add("btn", "next-btn");
+            btnContainer.appendChild(nextBtn);
+
+            nextBtn.addEventListener("click", () => {
+              if (container.classList.contains("result-container3")) {
+                if (clickCount < messages.length) {
+                  Array.from(container.children).forEach((child) => {
+                    child.style.transition = "opacity 0.3s";
+                    child.style.opacity = "0";
+                  });
+
+                  setTimeout(() => {
+                    Array.from(container.children).forEach(
+                      (child) => (child.style.display = "none")
+                    );
+                    heartLoader.style.display = "inherit";
+
+                    setTimeout(() => {
+                      heartLoader.style.display = "none";
+
+                      showCustomAlert(messages[clickCount], () => {
+                        container3.style.display = "block";
+                        videoWrapper.style.display = "flex";
+                        container3Video.src = videos[clickCount];
+                        container3Video.style.display = "block";
+                        container3Video.play();
+
+                        videoText.textContent = videoMessages[clickCount];
+                        videoText.style.opacity = "1";
+
+                        setTimeout(() => {
+                          videoWrapper.style.opacity = "1";
+                          container3Video.style.opacity = "1";
+                        }, 30);
+
+                        btnContainer.style.opacity = "0";
+                        btnContainer.style.display = "block";
+                        setTimeout(() => {
+                          btnContainer.style.transition = "opacity 0.5s";
+                          btnContainer.style.opacity = "1";
+                        }, 3000);
+
+                        clickCount++;
+                      });
+                    }, 500);
+                  }, 300);
+                } else {
+                  container.style.display = "none";
+                  container3Video.style.display = "none";
+                  heartLoader.style.display = "inherit";
+
+                  setTimeout(() => {
+                    heartLoader.style.display = "none";
+                    const nextContainer = resultContainers[index + 1];
+                    nextContainer.style.display = "block";
+                    const gifResult =
+                      nextContainer.querySelector(".gif-result");
+                    if (gifResult) gifResult.play();
+                  }, 5000);
+                }
+              } else {
+                container.style.display = "none";
+                heartLoader.style.display = "inherit";
+
+                setTimeout(() => {
+                  heartLoader.style.display = "none";
+                  const nextContainer = resultContainers[index + 1];
+                  nextContainer.style.display = "block";
+
+                  const gifResult = nextContainer.querySelector(".gif-result");
+                  if (gifResult) gifResult.play();
+                }, 3000);
+              }
+            });
+          }
+        });
+      });
+
+      const style = document.createElement("style");
+      style.innerHTML = `
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}`;
+      document.head.appendChild(style);
+    </script>
+
+    <script>
+      const btn = document.querySelector(".open-letter-btn");
+      const env = document.querySelector(".envelope");
+
+      if (btn && env) {
+        // เปิดซองตอนคลิก
+        btn.addEventListener("click", function () {
+          env.classList.add("open");
+        });
+
+        // ปิดซองเมื่อเอาเมาส์ออกจากปุ่ม
+        btn.addEventListener("mouseleave", function () {
+          env.classList.remove("open");
+        });
+      }
+    </script>
+    <script>
+      const lastDate = new Date(2025, 10, 17, 0, 0, 0);
+
+      function updateTime() {
+        const now = new Date();
+        let diffMs = now - lastDate;
+
+        if (diffMs < 0) {
+          document.getElementById("time").textContent = "Not yet started";
+          return;
+        }
+
+        let totalSeconds = Math.floor(diffMs / 1000);
+
+        const days = Math.floor(totalSeconds / (24 * 3600));
+        totalSeconds %= 24 * 3600;
+
+        const hours = Math.floor(totalSeconds / 3600);
+        totalSeconds %= 3600;
+
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+
+        document.getElementById("time").innerHTML =
+          `<span class="num days">${days}</span><span class="label">天</span> ` +
+          `<span class="num hours">${hours}</span><span class="label">小時</span> ` +
+          `<span class="num minutes">${minutes}</span><span class="label">分鐘</span> ` +
+          `<span class="num seconds">${seconds}</span><span class="label">秒鐘</span>`;
+      }
+
+      updateTime(); // เรียกครั้งแรก
+      setInterval(updateTime, 1000); // อัปเดตทุกวินาที
+    </script>
+
+    <script>
+      let timer = null;
+      let hideTimeout = null;
+
+      const toggleBtn = document.getElementById("toggleBtn");
+      const configBox = document.getElementById("configBox");
+
+      // เริ่มเคาท์ดาวน์
+      function startCountdown(savedDate) {
+        if (timer) clearInterval(timer);
+
+        timer = setInterval(() => {
+          const now = new Date().getTime();
+          const target = new Date(savedDate).getTime();
+          const diff = target - now;
+
+          if (diff <= 0) {
+            document.getElementById("countdownText").textContent = "該到了！✨";
+            clearInterval(timer);
+            return;
+          }
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+          document.getElementById("countdownText").innerHTML =
+            `<span class="date days">${days}</span><span class="label">天</span> ` +
+            `<span class="date hours">${hours}</span><span class="label">小時</span> ` +
+            `<span class="date minutes">${minutes}</span><span class="label">分鐘</span>`;
+        }, 1000);
+      }
+
+      // เปิดกล่อง
+      function showConfig() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        configBox.style.display = "block";
+      }
+
+      // ซ่อนกล่องถ้าเมาส์ไม่อยู่บนปุ่มหรือกล่อง
+      function scheduleHideConfig() {
+        hideTimeout = setTimeout(() => {
+          const isHoveringBtn = toggleBtn.matches(":hover");
+          const isHoveringBox = configBox.matches(":hover");
+
+          if (!isHoveringBtn && !isHoveringBox) {
+            configBox.style.display = "none";
+          }
+        }, 100); // หน่วง 100ms ให้เลื่อนเมาส์จากปุ่มไปกล่องได้
+      }
+
+      // ปุ่มเปิดกล่อง
+      toggleBtn.addEventListener("click", showConfig);
+
+      // ตรวจสอบ hover เมาส์ออก
+      toggleBtn.addEventListener("mouseleave", scheduleHideConfig);
+      configBox.addEventListener("mouseleave", scheduleHideConfig);
+
+      // บันทึกการตั้งค่า
+      document.getElementById("setBtn").addEventListener("click", () => {
+        const selected = document.getElementById("datePicker").value;
+        const title = document.getElementById("titleInput").value.trim();
+
+        if (!selected) {
+          alert("請選擇日期 📅");
+          return;
+        }
+
+        if (!title) {
+          alert("請輸入倒數計時名稱 ⏳📝");
+          return;
+        }
+
+        localStorage.setItem("countdown_date", selected);
+        localStorage.setItem("countdown_title", title);
+
+        document.getElementById("titleDisplay").textContent = title;
+        startCountdown(selected);
+
+        configBox.style.display = "none";
+      });
+
+      // รีเซ็ตค่า
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        if (timer) clearInterval(timer);
+
+        localStorage.removeItem("countdown_date");
+        localStorage.removeItem("countdown_title");
+
+        document.getElementById("titleDisplay").textContent =
+          "倒數計時名稱 ⏳✨";
+        document.getElementById("countdownText").textContent = "--:--:--";
+        document.getElementById("titleInput").value = "";
+        document.getElementById("datePicker").value = "";
+      });
+
+      // โหลดค่าเดิมจาก localStorage
+      window.onload = () => {
+        const savedDate = localStorage.getItem("countdown_date");
+        const savedTitle = localStorage.getItem("countdown_title");
+
+        if (savedTitle) {
+          document.getElementById("titleDisplay").textContent = savedTitle;
+          document.getElementById("titleInput").value = savedTitle;
+        }
+
+        if (savedDate) {
+          document.getElementById("datePicker").value = savedDate;
+          startCountdown(savedDate);
+        }
+      };
+    </script>
+  </body>
+</html>

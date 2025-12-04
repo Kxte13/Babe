@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="page.css" />
     <title>My Page</title>
+    <style>
+      @font-face {
+        font-family: "CoolRegularScript";
+        src: url("font/font1.ttf") format("truetype");
+      }
+    </style>
   </head>
   <body>
+    <div class="content">
+      <div class="aurora-box">
+        <h1 class="aurora">
+          <span class="time" id="time"></span>
+        </h1>
+      </div>
+    </div>
     <!---- Hidden Open / Close Toggles ---->
     <input type="radio" id="nav-close" name="nav-toggle" value="nav-close" />
     <input type="radio" id="nav-toggle" name="nav-toggle" value="nav-toggle" />
@@ -87,7 +100,7 @@
     <nav>
       <ul>
         <li>
-          <a href="javascript:void(0);" title="Home" rel="noopener">I</a>
+          <a href="Gift/gift.html">禮物🎁 </a>
         </li>
 
         <li>
@@ -107,6 +120,39 @@
         </li>
       </ul>
     </nav>
+    <script>
+      const lastDate = new Date(2025, 10, 17, 0, 0, 0);
+
+      function updateTime() {
+        const now = new Date();
+        let diffMs = now - lastDate;
+
+        if (diffMs < 0) {
+          document.getElementById("time").textContent = "Not yet started";
+          return;
+        }
+
+        let totalSeconds = Math.floor(diffMs / 1000);
+
+        const days = Math.floor(totalSeconds / (24 * 3600));
+        totalSeconds %= 24 * 3600;
+
+        const hours = Math.floor(totalSeconds / 3600);
+        totalSeconds %= 3600;
+
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+
+        document.getElementById("time").innerHTML =
+          `<span class="num days">${days}</span><span class="label">天</span> ` +
+          `<span class="num hours">${hours}</span><span class="label">小時</span> ` +
+          `<span class="num minutes">${minutes}</span><span class="label">分鐘</span> ` +
+          `<span class="num seconds">${seconds}</span><span class="label">秒鐘</span>`;
+      }
+
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>
   </body>
 </html>
 <!---- END Main Navigation ---->

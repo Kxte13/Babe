@@ -1,0 +1,84 @@
+.envelope-wrapper {
+  position: absolute;
+  left: 380px;            /* <-- ระยะจากขอบซ้าย ปรับเพิ่มลดได้ */
+  top: 50%;
+  transform: translateY(-50%);
+
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+  .open-letter-btn {
+    padding: 12px 25px;
+    background: #ff8aa6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    align-self: flex-end;
+  }
+
+  .envelope {
+    width: 550px;                /* ปรับความกว้างที่นี่ */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    overflow: hidden;            /* สำคัญเพื่อให้ flap ไม่ล้น */
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    background: transparent;
+    /* สร้างช่องด้านบนสำหรับ flap ด้วย padding-top */
+    padding-top: 110px;          /* ต้องเท่ากับความสูง flap เพื่อไม่ให้จดหมายทับฝา */
+  }
+
+  /* ฝาซอง */
+  .envelope .flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 110px;              /* ปรับให้สัมพันธ์กับ padding-top */
+    background: #ff8aa6;
+    transform-origin: top center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    z-index: 2;
+    transition: transform 0.8s ease-in-out;
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.06);
+  }
+
+  /* จดหมาย (อยู่ใน flow) */
+  .envelope .letter {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 22px 30px;
+    background: #fff;
+    border: 2px solid #ff8aa6;
+    border-radius: 0 0 15px 15px;
+    /* ให้ความสูงขยายตามข้อความ */
+    height: auto;
+    min-height: 180px;
+
+    /* เริ่มซ่อนโดยเลื่อนลง (ซ่อนด้วย overflow ของ .envelope) */
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease-in-out;
+    z-index: 1;
+  }
+
+  /* เมื่อเปิด */
+  .envelope.open .flap {
+    transform: rotateX(-180deg); /* หมุนเปิดฝา */
+  }
+
+  .envelope.open .letter {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ปรับข้อความให้สวย */
+  .letter p { margin: 0 0 10px; line-height:1.6; white-space:pre-wrap; }

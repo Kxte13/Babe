@@ -8,38 +8,39 @@ const pwInput = document.getElementById('pw');
 const showHint = document.getElementById('showHint');
 const hintText = document.getElementById('hint');
 
-    function closePopup() {
-      popup.style.display = 'none';
-      pwInput.focus();
-    }
+function closePopup() {
+popup.style.display = 'none';
+pwInput.focus();
+}
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (pwInput.value === '12') {
-        localStorage.setItem('authenticated', 'true');
-        window.location.href = 'page.html';
-        } else {
-        popup.style.display = 'flex';
-        pwInput.value = '';
-        }
-        });
-        
-        
-        popupClose.addEventListener('click', closePopup);
-        
-        
-        document.addEventListener('keydown', (e) => {
-        if (popup.style.display === 'flex' && e.key === 'Enter') {
-        e.preventDefault();
-        closePopup();
-        }
-        });
-        
-        
-        // แสดง hint เมื่อ hover ปุ่ม
-        showHint.addEventListener('mouseenter', () => {
-        hintText.style.display = 'block';
-        });
-        showHint.addEventListener('mouseleave', () => {
-        hintText.style.display = 'none';
-        });
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (pwInput.value === '021125') {
+  localStorage.setItem('authenticated', 'true');
+  window.location.href = 'page.html';
+  } else {
+  popup.style.display = 'flex';
+  pwInput.value = '';
+  }
+  });
+  
+  
+popupClose.addEventListener('click', closePopup);
+  
+  
+document.addEventListener('keydown', (e) => {
+  if (popup.style.display === 'flex' && e.key === 'Enter') {
+  e.preventDefault();
+  closePopup();
+  }
+  });
+  
+  
+  // แสดง hint เมื่อ hover ปุ่ม
+  showHint.addEventListener('mouseenter', () => {
+  hintText.style.display = 'block';
+  });
+  showHint.addEventListener('mouseleave', () => {
+  hintText.style.display = 'none';
+  });
+      

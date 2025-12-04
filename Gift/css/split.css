@@ -1,0 +1,105 @@
+.card-wrapper {
+  display: inline-block;
+  background: #f386b4;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(10%, -50%);
+  /* margin-top: -160px;
+  margin-left: -740px; */
+}
+
+/* entire container, keeps perspective */
+.card-flip-container {
+  display: inline-block;
+  perspective: 1000px;
+  vertical-align: top; /* Prevent unwanted margin. */
+}
+
+/* flip the pane when hovered */
+
+.card-wrapper:hover .card-flip-left {
+  transform: rotateY(-180deg);
+}
+
+.card-wrapper:hover .card-flip-right {
+  transform: rotateY(180deg);
+}
+
+.card-flip-container,
+.card-front,
+.card-back {
+  width: 200px;
+  height: 600px;
+}
+
+/* flip speed goes here */
+.card-flip {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.card-front {
+  z-index: 2;
+  background: #f0acbd;
+  transform: rotateY(0deg);
+  overflow: hidden;
+  /*position: relative;*/
+}
+
+.card-front-left .card-circle {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.card-front-right .card-circle {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.card-circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background: #ffffff;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* back, initially hidden pane */
+.card-back {
+  background: rgb(220, 220, 220);
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 200px;
+  height: 600px;
+}
+
+.card-back-left img {
+  position: absolute;
+  left: 0;
+}
+
+.card-back-right img {
+  position: absolute;
+  right: 0;
+}

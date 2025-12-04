@@ -2,7 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "CoolRegularScript", serif;
 }
 
 body,
@@ -25,7 +25,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: rgb(243, 140, 154);
+  background: rgb(246, 202, 219);
   margin: 0;
 }
 
@@ -69,7 +69,7 @@ body {
   width: 50px;
   height: 40px;
   top: 20px;
-  left: 20px;
+  right: 20px;
   opacity: 0;
 }
 
@@ -392,8 +392,6 @@ nav > ul > li:nth-child(5) {
   background: #fab397;
 }
 
-/* --- Responsivity --- */
-
 @media (max-width: 890px) {
   nav > ul > li > a {
     font-size: 14pt;
@@ -426,4 +424,79 @@ nav > ul > li:nth-child(5) {
   #nav-toggle:checked ~ nav > ul > li:nth-child(5) {
     bottom: 0% !important;
   }
+}
+
+.content {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  text-align: left;
+  z-index: 7;
+}
+.aurora {
+  --clr-1: #bfe9f4;
+  --clr-2: #eef4bf;
+  --clr-3: #bff4df;
+  --clr-4: #c4bff4;
+
+  --blur: 1rem;
+  --fs: clamp(1rem, 2vw, 1.5rem);
+  --ls: clamp(-1.75px, -0.25vw, -3.5px);
+
+  font-size: var(--fs);
+  letter-spacing: var(--ls);
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-4)
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  animation: aurora 90s linear infinite;
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+.aurora-box {
+  display: inline-block;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 1px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+}
+.time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.time span.num {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  text-align: right;
+}
+.time .days {
+  min-width: 3ch;
+}
+.time .hours {
+  min-width: 2ch;
+}
+.time .minutes {
+  min-width: 2ch;
+}
+.time .seconds {
+  min-width: 2ch;
 }

@@ -4,19 +4,23 @@
   --accent: #eb8abb;
   --text: #7c0d0d;
 }
+
 html,
 body {
   height: 100%;
   margin: 0;
   font-family: "CoolRegularScript", serif;
   background: linear-gradient(180deg, var(--bg), #ffffff);
+  overflow: hidden;
 }
+
 .wrap {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .card {
   background: rgba(255, 255, 255, 0.03);
   padding: 28px;
@@ -25,13 +29,16 @@ body {
   width: 320px;
   color: var(--text);
 }
+
 h1 {
   margin: 0 0 12px;
   font-size: 18px;
 }
+
 label {
   font-size: 13px;
 }
+
 input[type="password"] {
   width: 100%;
   padding: 10px;
@@ -42,12 +49,14 @@ input[type="password"] {
   background: transparent;
   color: var(--text);
 }
+
 .hint-text {
   font-size: 14px;
   color: #a33;
   margin-top: 6px;
   display: none;
 }
+
 .btn {
   display: inline-block;
   padding: 10px 14px;
@@ -58,11 +67,14 @@ input[type="password"] {
   cursor: pointer;
   width: 100%;
 }
+
 .msg {
   margin-top: 12px;
   font-size: 13px;
   min-height: 18px;
 }
+
+/* popup */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -76,6 +88,7 @@ input[type="password"] {
   z-index: 9999;
   animation: fadeIn 0.2s ease;
 }
+
 .popup-box {
   background: #ffc3d7;
   color: #000;
@@ -85,6 +98,7 @@ input[type="password"] {
   text-align: center;
   animation: pop 0.25s ease;
 }
+
 #popupClose {
   margin-top: 15px;
   padding: 8px 18px;
@@ -94,6 +108,7 @@ input[type="password"] {
   border-radius: 8px;
   cursor: pointer;
 }
+
 @keyframes pop {
   from {
     transform: scale(0.7);
@@ -104,6 +119,7 @@ input[type="password"] {
     opacity: 1;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -112,26 +128,20 @@ input[type="password"] {
     opacity: 1;
   }
 }
+
 .input-hint-wrapper {
   display: flex;
-  align-items: center; /* ปุ่มอยู่กลางแนวตั้งกับ input */
-  gap: 8px; /* ระยะห่างระหว่าง input กับปุ่ม */
-  margin-bottom: 6px; /* ให้ใกล้ hint-text */
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-/* ปรับ input ใน wrapper */
 .input-hint-wrapper input[type="password"] {
-  flex: 1; /* ให้ input ขยายเต็มพื้นที่ที่เหลือ */
-  margin: 0; /* ลบ margin-top, margin-bottom เดิม */
-  padding: 10px; /* ยังคง padding เดิม */
-  border-radius: 8px;
-  border: 3px solid rgba(235, 75, 75, 0.06);
-  background: transparent;
-  color: var(--text);
+  flex: 1;
+  margin: 0;
 }
 
-/* ปรับปุ่ม hint ให้ไม่เต็ม width */
-.input-hint-wrapper button#showHint {
-  width: auto; /* ปุ่มมีความกว้างพอดีข้อความ */
+.input-hint-wrapper #showHint {
+  width: auto;
   padding: 10px 12px;
 }
