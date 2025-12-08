@@ -143,7 +143,7 @@ body {
   animation-fill-mode: forwards;
 }
 
-.nav-toggle > figure:nth-child(2) {
+/* .nav-toggle > figure:nth-child(2) {
   background: rgb(233, 67, 108);
 }
 
@@ -153,6 +153,24 @@ body {
 
 .nav-toggle > figure:nth-child(4) {
   background: rgb(72, 134, 192);
+} */
+
+.nav-toggle > figure:nth-child(2) {
+  background-image: url("img/1.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.nav-toggle > figure:nth-child(3) {
+  background-image: url("img/2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.nav-toggle > figure:nth-child(4) {
+  background-image: url("img/3.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .nav-toggle > label,
