@@ -1,0 +1,155 @@
+.content {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  text-align: left;
+  z-index: 7;
+}
+.aurora {
+  --clr-1: #bfe9f4;
+  --clr-2: #eef4bf;
+  --clr-3: #bff4df;
+  --clr-4: #c4bff4;
+
+  --blur: 1rem;
+  --fs: clamp(1rem, 2vw, 1.5rem);
+  --ls: clamp(-1.75px, -0.25vw, -3.5px);
+
+  font-size: var(--fs);
+  letter-spacing: var(--ls);
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-4)
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  animation: aurora 90s linear infinite;
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+.aurora-box {
+  display: inline-block;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 1px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+}
+.time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.time span.num {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  text-align: right;
+}
+.time .days {
+  min-width: 3ch;
+}
+.time .hours {
+  min-width: 2ch;
+}
+.time .minutes {
+  min-width: 2ch;
+}
+.time .seconds {
+  min-width: 2ch;
+}
+.countdownText span.date {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  text-align: right;
+}
+#toggleBtn:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+}
+#toggleBtn:active {
+  transform: scale(0.95);
+}
+#configBox {
+  margin-top: 15px;
+  padding: 15px;
+  border: 2px solid #eb8abb;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#configBox:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.countdown {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 7;
+
+  border-radius: 12px;
+}
+
+#titleDisplay {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border: 2px solid #eb8abb;
+  border-radius: 12px;
+  padding: 6px 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#countdownText {
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 2px solid #7c0d0d;
+  border-radius: 12px;
+  padding: 6px 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #eb8abb;
+  border-radius: 8px;
+  margin: 0 2px;
+  background-color: #ffe6f0;
+}
+
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hide {
+  display: none !important;
+}

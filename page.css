@@ -38,8 +38,8 @@ body {
 .nav-close {
   position: absolute;
   display: flex;
-  width: 100px;
-  height: 90px;
+  width: 225px;
+  height: 195px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -50,11 +50,11 @@ body {
 .nav-toggle::after {
   position: absolute;
   top: -40px;
-  content: "Click me!";
+  content: "點我吧～✨";
   color: white;
   line-height: 0;
   margin: 0;
-  font-size: 12pt;
+  font-size: 18pt;
   pointer-events: none !important;
 }
 
@@ -110,7 +110,7 @@ body {
 
 .nav-toggle > figure {
   width: 100%;
-  height: 13%;
+  height: 8%;
   margin: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -142,18 +142,6 @@ body {
   animation-delay: 1s;
   animation-fill-mode: forwards;
 }
-
-/* .nav-toggle > figure:nth-child(2) {
-  background: rgb(233, 67, 108);
-}
-
-.nav-toggle > figure:nth-child(3) {
-  background: rgb(135, 65, 214);
-}
-
-.nav-toggle > figure:nth-child(4) {
-  background: rgb(72, 134, 192);
-} */
 
 .nav-toggle > figure:nth-child(2) {
   background-image: url("img/1.png");
@@ -444,77 +432,80 @@ nav > ul > li:nth-child(5) {
   }
 }
 
-.content {
-  position: absolute;
-  top: 5px;
-  left: 16px;
-  text-align: left;
-  z-index: 7;
+:root {
+  --color-primary: #caedf6;
+  --color-secondary: #f6aca2;
+  --color-tertiary: #f1f6ca;
+  --color-quaternary: #cfcaf6;
+  --color-quinary: #dbf6ca;
 }
-.aurora {
-  --clr-1: #bfe9f4;
-  --clr-2: #eef4bf;
-  --clr-3: #bff4df;
-  --clr-4: #c4bff4;
-
-  --blur: 1rem;
-  --fs: clamp(1rem, 2vw, 1.5rem);
-  --ls: clamp(-1.75px, -0.25vw, -3.5px);
-
-  font-size: var(--fs);
-  letter-spacing: var(--ls);
-  font-weight: 700;
+.content-text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20%;
+}
+.text-shadows {
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+    9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  font-family: bungee, sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
-  position: relative;
-  color: transparent;
-  background: linear-gradient(
-    90deg,
-    var(--clr-1),
-    var(--clr-2),
-    var(--clr-3),
-    var(--clr-4)
-  );
-  background-size: 400%;
-  -webkit-background-clip: text;
-  animation: aurora 90s linear infinite;
+  font-size: calc(2rem + 5vw);
+  text-align: center;
+  margin: 0;
+  color: var(--color-primary);
+  animation: shadows 3s ease-in infinite;
+  letter-spacing: 0.4rem;
 }
 
-@keyframes aurora {
+@keyframes shadows {
   0% {
-    background-position: 0% 50%;
+    text-shadow: none;
+  }
+  10% {
+    transform: translate(-3px, -3px);
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  20% {
+    transform: translate(-6px, -6px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
+  }
+  30% {
+    transform: translate(-9px, -9px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  40% {
+    transform: translate(-12px, -12px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  50% {
+    transform: translate(-12px, -12px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
+  }
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
   }
   100% {
-    background-position: 400% 50%;
+    text-shadow: none;
   }
-}
-.aurora-box {
-  display: inline-block;
-  border: 1px solid #ffffff;
-  border-radius: 60px;
-  padding: 1px 20px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-}
-.time {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.time span.num {
-  font-variant-numeric: tabular-nums;
-  display: inline-block;
-  text-align: right;
-}
-.time .days {
-  min-width: 3ch;
-}
-.time .hours {
-  min-width: 2ch;
-}
-.time .minutes {
-  min-width: 2ch;
-}
-.time .seconds {
-  min-width: 2ch;
 }

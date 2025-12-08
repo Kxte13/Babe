@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="page.css" />
+    <link rel="stylesheet" href="datetime.css" />
     <title>My Page</title>
     <style>
       @font-face {
@@ -20,6 +21,96 @@
         </h1>
       </div>
     </div>
+    <div class="countdown">
+      <h2 id="titleDisplay">倒數計時名稱 ⏳✨</h2>
+      <div class="timeRow">
+        <h2 id="countdownText" style="margin-top: 10px">--:--:--</h2>
+
+        <button
+          id="toggleBtn"
+          style="
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 8px;
+            background: url('../img/count.png') no-repeat center/contain;
+            cursor: pointer;
+          "
+        ></button>
+      </div>
+
+      <!-- ส่วนนี้จะถูกซ่อน -->
+      <div
+        id="configBox"
+        style="
+          margin-top: 15px;
+          padding: 15px;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          background: #fff;
+          display: none;
+          transition: 0.3s;
+        "
+      >
+        <input
+          type="text"
+          id="titleInput"
+          placeholder="倒數計時名稱..."
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-bottom: 10px;
+            display: block;
+          "
+        />
+
+        <input
+          type="date"
+          id="datePicker"
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            display: block;
+            margin-bottom: 10px;
+          "
+        />
+
+        <button
+          id="setBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #eb8abb;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          儲存 💾
+        </button>
+        <button
+          id="resetBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6b6b;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          重設 🔄
+        </button>
+      </div>
+    </div>
+
+    <div class="content-text">
+      <h2 class="text-shadows">love you</h2>
+    </div>
+
     <!---- Hidden Open / Close Toggles ---->
     <input type="radio" id="nav-close" name="nav-toggle" value="nav-close" />
     <input type="radio" id="nav-toggle" name="nav-toggle" value="nav-toggle" />
@@ -120,38 +211,22 @@
         </li>
       </ul>
     </nav>
+    <script src="datetime.js"></script>
     <script>
-      const lastDate = new Date(2025, 10, 17, 0, 0, 0);
+      const content = document.querySelector(".content");
+      const navToggle = document.querySelector(".nav-toggle");
+      const navClose = document.querySelector(".nav-close");
+      const countdown = document.querySelector(".countdown");
 
-      function updateTime() {
-        const now = new Date();
-        let diffMs = now - lastDate;
+      navToggle.addEventListener("click", () => {
+        content.classList.add("hide"); // ซ่อนตอนกด nav-toggle
+        countdown.classList.add("hide");
+      });
 
-        if (diffMs < 0) {
-          document.getElementById("time").textContent = "Not yet started";
-          return;
-        }
-
-        let totalSeconds = Math.floor(diffMs / 1000);
-
-        const days = Math.floor(totalSeconds / (24 * 3600));
-        totalSeconds %= 24 * 3600;
-
-        const hours = Math.floor(totalSeconds / 3600);
-        totalSeconds %= 3600;
-
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-
-        document.getElementById("time").innerHTML =
-          `<span class="num days">${days}</span><span class="label">天</span> ` +
-          `<span class="num hours">${hours}</span><span class="label">小時</span> ` +
-          `<span class="num minutes">${minutes}</span><span class="label">分鐘</span> ` +
-          `<span class="num seconds">${seconds}</span><span class="label">秒鐘</span>`;
-      }
-
-      updateTime();
-      setInterval(updateTime, 1000);
+      navClose.addEventListener("click", () => {
+        content.classList.remove("hide"); // แสดงกลับตอนกด nav-close
+        countdown.classList.remove("hide");
+      });
     </script>
   </body>
 </html>

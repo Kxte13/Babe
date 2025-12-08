@@ -6,18 +6,13 @@
   top: 50%;
   left: 50%;
   transform: translate(10%, -50%);
-  /* margin-top: -160px;
-  margin-left: -740px; */
 }
 
-/* entire container, keeps perspective */
 .card-flip-container {
   display: inline-block;
   perspective: 1000px;
-  vertical-align: top; /* Prevent unwanted margin. */
+  vertical-align: top;
 }
-
-/* flip the pane when hovered */
 
 .card-wrapper:hover .card-flip-left {
   transform: rotateY(-180deg);
@@ -34,14 +29,12 @@
   height: 600px;
 }
 
-/* flip speed goes here */
 .card-flip {
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
 }
 
-/* hide back of pane during swap */
 .card-front,
 .card-back {
   backface-visibility: hidden;
@@ -50,13 +43,11 @@
   left: 0;
 }
 
-/* front pane, placed above back */
 .card-front {
   z-index: 2;
   background: #f0acbd;
   transform: rotateY(0deg);
   overflow: hidden;
-  /*position: relative;*/
 }
 
 .card-front-left .card-circle {
@@ -82,7 +73,6 @@
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* back, initially hidden pane */
 .card-back {
   background: rgb(220, 220, 220);
   transform: rotateY(180deg);
@@ -102,4 +92,89 @@
 .card-back-right img {
   position: absolute;
   right: 0;
+}
+
+.envelope-wrapper {
+  position: absolute;
+  left: 380px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.open-letter-btn {
+  padding: 12px 25px;
+  background: #ff8aa6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+
+.envelope {
+  width: 550px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  background: transparent;
+  padding-top: 110px;
+}
+
+.envelope .flap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 110px;
+  background: #ff8aa6;
+  transform-origin: top center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  z-index: 2;
+  transition: transform 0.8s ease-in-out;
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.06);
+}
+
+.envelope .letter {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 22px 30px;
+  background: #fff;
+  border: 2px solid #ff8aa6;
+  border-radius: 0 0 15px 15px;
+  /* ให้ความสูงขยายตามข้อความ */
+  height: auto;
+  min-height: 180px;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1),
+    opacity 0.45s ease-in-out;
+  z-index: 1;
+}
+
+.envelope.open .flap {
+  transform: rotateX(-180deg);
+}
+
+.envelope.open .letter {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.letter p {
+  margin: 0 0 10px;
+  line-height: 1.6;
+  white-space: pre-line; /* ขึ้นบรรทัดสวย */
+  text-align: left; /* ชิดซ้ายอ่านง่าย */
 }

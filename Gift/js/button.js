@@ -18,13 +18,12 @@ clickCounterDisplay.style.zIndex = "1000";
 clickCounterDisplay.textContent = "Clicks: 0";
 document.body.appendChild(clickCounterDisplay);
 
-let escapeDistance = 50;
+let escapeDistance = 60;
 let canRunAway = true;
 
 if (yesBtn && noBtn) {
-
   let clickCount = 0;
-  const maxClicks = 10;
+  const maxClicks = 5;
 
   document.addEventListener("mousedown", (e) => {
     if (e.button === 0) {
@@ -66,12 +65,20 @@ if (yesBtn && noBtn) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
+    // ขนาดพื้นที่ปลอดภัย (ตีกรอบตรงกลาง 60%)
+    const safeWidth = screenWidth * 0.55;
+    const safeHeight = screenHeight * 0.8;
+
+    // ตำแหน่งเริ่มของสี่เหลี่ยมตรงกลาง
+    const offsetX = (screenWidth - safeWidth) / 2;
+    const offsetY = (screenHeight - safeHeight) / 2;
+
     const btnWidth = btn.offsetWidth;
     const btnHeight = btn.offsetHeight;
-    const padding = 20;
 
-    const newX = Math.random() * (screenWidth - btnWidth - padding * 2) + padding;
-    const newY = Math.random() * (screenHeight - btnHeight - padding * 2) + padding;
+    // สุ่มเฉพาะภายในกรอบกลาง
+    const newX = offsetX + Math.random() * (safeWidth - btnWidth);
+    const newY = offsetY + Math.random() * (safeHeight - btnHeight);
 
     btn.style.left = `${newX}px`;
     btn.style.top = `${newY}px`;
@@ -97,13 +104,13 @@ if (yesBtn && noBtn) {
   });
 
   yesBtn.addEventListener("click", () => {
-    questionContainer.style.display = "none"; 
-    heartLoader.style.display = "inherit"; 
-    setTimeout(() => { 
-      heartLoader.style.display = "none"; 
-      resultContainer.style.display = "inherit"; 
-      gifResult.play(); 
-    }, 3000); 
+    questionContainer.style.display = "none";
+    heartLoader.style.display = "inherit";
+    setTimeout(() => {
+      heartLoader.style.display = "none";
+      resultContainer.style.display = "inherit";
+      gifResult.play();
+    }, 3000);
 
     const nextPage = yesBtn.dataset.next;
     if (nextPage) window.location.href = nextPage;
@@ -112,5 +119,4 @@ if (yesBtn && noBtn) {
   noBtn.addEventListener("click", () => {
     noBtn.style.display = "none";
   });
-
 }
