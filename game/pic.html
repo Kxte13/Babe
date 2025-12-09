@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Picture Choice + Message</title>
+    <style>
+      body {
+        background: #f7c9d8;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .top-pic {
+        width: 250px;
+        height: 150px;
+        background: white;
+        border-radius: 15px;
+        margin: 0 auto 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 3px solid #e58aa3;
+      }
+
+      .top-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .pic-row {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .pic-box {
+        width: 200px;
+        height: 150px;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 3px solid #ffffff;
+        transition: 0.2s;
+      }
+
+      .pic-box:hover {
+        border-color: #ff6fa5;
+        transform: scale(1.05);
+      }
+
+      .pic-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #result {
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #b30044;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>เลือกภาพด้านล่าง</h2>
+
+    <div class="top-pic">
+      <img id="topImg" />
+    </div>
+
+    <div class="pic-row">
+      <div class="pic-box" onclick="choosePic(0)">
+        <img id="img0" />
+      </div>
+      <div class="pic-box" onclick="choosePic(1)">
+        <img id="img1" />
+      </div>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+      // ===============================
+      //     รูป + ข้อความของรูปนั้น
+      // ===============================
+      const allPics = [
+        {
+          img: "https://picsum.photos/300?random=1",
+          msg: "ข้อความของรูปที่ 1",
+        },
+        {
+          img: "https://picsum.photos/300?random=2",
+          msg: "ข้อความของรูปที่ 2",
+        },
+        {
+          img: "https://picsum.photos/300?random=3",
+          msg: "ข้อความของรูปที่ 3",
+        },
+        {
+          img: "https://picsum.photos/300?random=4",
+          msg: "ข้อความของรูปที่ 4",
+        },
+        {
+          img: "https://picsum.photos/300?random=5",
+          msg: "ข้อความของรูปที่ 5",
+        },
+        {
+          img: "https://picsum.photos/300?random=6",
+          msg: "ข้อความของรูปที่ 6",
+        },
+        {
+          img: "https://picsum.photos/300?random=7",
+          msg: "ข้อความของรูปที่ 7",
+        },
+        {
+          img: "https://picsum.photos/300?random=8",
+          msg: "ข้อความของรูปที่ 8",
+        },
+        {
+          img: "https://picsum.photos/300?random=9",
+          msg: "ข้อความของรูปที่ 9",
+        },
+        {
+          img: "https://picsum.photos/300?random=10",
+          msg: "ข้อความของรูปที่ 10",
+        },
+      ];
+
+      let used = 2; // รูปที่ใช้ไปแล้ว index = 0,1
+
+      // โหลดภาพแรกสองภาพ
+      document.getElementById("img0").src = allPics[0].img;
+      document.getElementById("img1").src = allPics[1].img;
+
+      // ฟังก์ชันเมื่อเลือกรูป
+      function choosePic(index) {
+        // แสดงรูปบนสุด
+        document.getElementById("topImg").src = document.getElementById(
+          "img" + index
+        ).src;
+
+        // หา object ของรูปที่เลือก
+        const selectedObj = allPics.find(
+          (p) => p.img === document.getElementById("img" + index).src
+        );
+
+        // ถ้ารูปหมดให้แสดงข้อความสุดท้ายด้วย
+        if (used >= allPics.length) {
+          document.getElementById("result").innerText =
+            "รูปสุดท้ายที่คุณเลือกคือ:\n" +
+            selectedObj.img +
+            "\n\nข้อความของรูปนั้น:\n" +
+            selectedObj.msg;
+          return;
+        }
+
+        // เปลี่ยนเฉพาะรูปที่ไม่ได้ถูกเลือก
+        const other = index === 0 ? 1 : 0;
+
+        document.getElementById("img" + other).src = allPics[used].img;
+
+        used++;
+      }
+    </script>
+  </body>
+</html>
