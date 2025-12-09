@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sweet Pink Yes/No Game</title>
+    <style>
+      /* ======= Theme Pink Sweet Style ======= */
+
+      body {
+        background: #f7c9d8;
+        font-family: "Cute Font", "ZCOOL KuaiLe", sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* กล่องเกม */
+      #game-area {
+        margin-top: 20px;
+      }
+
+      /* กล่องโชว์รูป */
+      #image-display {
+        width: 260px;
+        height: 260px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+        margin: 20px auto;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #image-display img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 15px;
+      }
+
+      /* ปุ่ม */
+      button {
+        font-size: 20px;
+        padding: 10px 28px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      /* YES */
+      .yes-btn {
+        background: #ff7b94;
+      }
+      .yes-btn:hover {
+        transform: scale(1.07);
+        opacity: 0.9;
+      }
+
+      /* NO */
+      .no-btn {
+        background: #ff98a6;
+      }
+      .no-btn:hover {
+        transform: scale(1.07);
+        opacity: 0.9;
+      }
+
+      /* รายงานท้ายเกม */
+      #result-screen {
+        background: white;
+        width: 350px;
+        padding: 25px;
+        margin: 40px auto;
+        border-radius: 22px;
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+        display: none;
+      }
+
+      #result-screen h2 {
+        font-size: 28px;
+        color: #ff6b90;
+        margin-bottom: 15px;
+      }
+
+      #answers-list {
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #444;
+      }
+
+      .score-box {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff4b78;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 32px; color: #ff4b78">寶寶 愛你呦 ❤️</h1>
+
+    <!-- พื้นที่เกม -->
+    <div id="game-area">
+      <div id="image-display"></div>
+
+      <h2 style="font-size: 30px; margin-top: 20px; color: #000">
+        寶寶愛我嗎？
+      </h2>
+
+      <button class="yes-btn" onclick="answer('yes')">Yes</button>
+      <button class="no-btn" onclick="answer('no')">No</button>
+    </div>
+
+    <!-- รายงานท้ายเกม -->
+    <div id="result-screen">
+      <h2>ผลลัพธ์ของคุณ 💗</h2>
+      <div id="answers-list"></div>
+      <div class="score-box">คะแนน: <span id="final-score"></span></div>
+    </div>
+
+    <script>
+      // ========= รูป + คำตอบที่ถูกต้อง =========
+      // เปลี่ยนเป็นรูปจริงของคุณได้เลย!
+      const images = [
+        { src: "https://i.imgur.com/6pQe7iK.png", correct: "yes" },
+        { src: "https://i.imgur.com/hSt7rfV.png", correct: "no" },
+        { src: "https://i.imgur.com/mjXQD0M.png", correct: "yes" },
+      ];
+
+      // ========= ตัวแปรเกม =========
+      let used = [];
+      let answers = [];
+      let score = 0;
+
+      // ========= โหลดรูปแรก =========
+      loadNextImage();
+
+      function loadNextImage() {
+        if (used.length === images.length) {
+          showResult();
+          return;
+        }
+
+        let index;
+        do {
+          index = Math.floor(Math.random() * images.length);
+        } while (used.includes(index));
+
+        used.push(index);
+
+        const imgBox = document.getElementById("image-display");
+        imgBox.innerHTML = `<img src="${images[index].src}">`;
+
+        imgBox.dataset.index = index;
+      }
+
+      function answer(ans) {
+        const index = Number(
+          document.getElementById("image-display").dataset.index
+        );
+
+        answers.push({
+          index,
+          answer: ans,
+        });
+
+        if (ans === images[index].correct) {
+          score++;
+        }
+
+        loadNextImage();
+      }
+
+      // ========= แสดงสรุปท้ายเกม =========
+      function showResult() {
+        document.getElementById("game-area").style.display = "none";
+
+        const box = document.getElementById("answers-list");
+        box.innerHTML = answers
+          .map((a) => `รูปที่ ${a.index + 1} → ${a.answer}`)
+          .join("<br>");
+
+        document.getElementById(
+          "final-score"
+        ).innerText = `${score} / ${images.length}`;
+
+        document.getElementById("result-screen").style.display = "block";
+      }
+    </script>
+  </body>
+</html>

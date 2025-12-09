@@ -23,7 +23,7 @@
     </style>
   </head>
   <body>
-    <a href="../menu/menu.html" class="home-fixed">
+    <a href="../menu/menu.html" class="home-fixed go-page" id="homeBtn">
       <img src="../img/home.png" alt="Home" class="home-icon" />
     </a>
     <div class="btnplace">
@@ -337,6 +337,9 @@
       </div>
       <div class="cssload-shadow"></div>
     </div>
+    <div id="loader">
+      <div class="heart-loader"></div>
+    </div>
     <script src="js/button.js"></script>
     <script src="../datetime.js"></script>
 
@@ -573,7 +576,6 @@
 }`;
       document.head.appendChild(style);
     </script>
-
     <script>
       const btn = document.querySelector(".open-letter-btn");
       const env = document.querySelector(".envelope");

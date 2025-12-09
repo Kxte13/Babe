@@ -190,3 +190,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // เริ่มต้นเป็นโหมดเวลา
   startClock();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.getElementById("loader");
+
+  document.querySelectorAll(".go-page").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const target = this.getAttribute("href");
+
+      // ซ่อนทุกอย่างยกเว้น loader
+      document.body.style.visibility = "hidden";
+
+      // แสดง loader
+      loader.style.display = "flex";
+      loader.style.visibility = "visible";
+
+      setTimeout(() => {
+        window.location.href = target;
+      }, 2000);
+    });
+  });
+});
