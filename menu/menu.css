@@ -2,11 +2,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "CoolRegularScript", serif;
 }
 
 body,
 html {
+  font-family: "CoolRegularScript", serif;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -144,19 +144,19 @@ body {
 }
 
 .nav-toggle > figure:nth-child(2) {
-  background-image: url("img/1.png");
+  background-image: url("img_menu/1.png");
   background-size: cover;
   background-position: center;
 }
 
 .nav-toggle > figure:nth-child(3) {
-  background-image: url("img/2.png");
+  background-image: url("img_menu/2.png");
   background-size: cover;
   background-position: center;
 }
 
 .nav-toggle > figure:nth-child(4) {
-  background-image: url("img/3.png");
+  background-image: url("img_menu/3.png");
   background-size: cover;
   background-position: center;
 }
