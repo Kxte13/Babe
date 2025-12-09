@@ -1,9 +1,15 @@
 .content {
   position: absolute;
-  top: 5px;
-  left: 16px;
+  top: 16%;
+  left: 6%;
   text-align: left;
   z-index: 7;
+}
+
+.btnplace {
+  position: fixed;
+  top: 2%;
+  left: 0.5%;
 }
 .aurora {
   --clr-1: #bfe9f4;
@@ -101,8 +107,8 @@
 
 .countdown {
   position: absolute;
-  top: 70px;
-  left: 20px;
+  top: 23%;
+  left: 0%;
   width: 500px;
   height: auto;
   display: flex;
@@ -119,7 +125,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-  border: 2px solid #eb8abb;
+  border: 2px solid #cadbf6;
   border-radius: 12px;
   padding: 6px 12px;
   background-color: #fff;
@@ -129,7 +135,7 @@
 #countdownText {
   font-size: 18px;
   margin-bottom: 10px;
-  border: 2px solid #7c0d0d;
+  border: 2px solid #cadbf6;
   border-radius: 12px;
   padding: 6px 12px;
   background-color: #fff;
@@ -152,4 +158,266 @@
 }
 .hide {
   display: none !important;
+}
+
+.today {
+  position: absolute;
+  top: 30%;
+  left: 7%;
+  text-align: left;
+  z-index: 7;
+}
+
+.calendarMain,
+.date,
+.day,
+.month,
+.year,
+.calendarNormal,
+.clock,
+.front,
+.right,
+.left {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: "CoolRegularScript", serif;
+  vertical-align: baseline;
+  text-decoration: none;
+  list-style: none;
+}
+img {
+  width: 100%;
+}
+.anim04c {
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.35, 0.15, 1.4);
+  transition: all 0.4s cubic-bezier(0.5, 0.35, 0.15, 1.4);
+}
+
+/*-----*/
+
+.outer {
+  position: relative;
+  top: 50%;
+  z-index: 1;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+/*-----*/
+
+.signboard {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  color: #000000;
+  border-radius: 10px;
+}
+/*-----*/
+
+.front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background: #f6eeca;
+  text-align: center;
+}
+.right {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  -webkit-transform: rotate(-10deg) translate(7px, 8px);
+  -moz-transform: rotate(-10deg) translate(7px, 8px);
+  -ms-transform: rotate(-10deg) translate(7px, 8px);
+  -o-transform: rotate(-10deg) translate(7px, 8px);
+  transform: rotate(-10deg) translate(7px, 8px);
+  background: #caedf6;
+}
+.left {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  -webkit-transform: rotate(5deg) translate(-4px, 4px);
+  -moz-transform: rotate(5deg) translate(-4px, 4px);
+  -ms-transform: rotate(5deg) translate(-4px, 4px);
+  -o-transform: rotate(5deg) translate(-4px, 4px);
+  transform: rotate(5deg) translate(-4px, 4px);
+  background: #cfcaf6;
+}
+/*-----*/
+
+.outer:hover .inner {
+  -webkit-transform: rotate(0) translate(0);
+  -moz-transform: rotate(0) translate(0);
+  -ms-transform: rotate(0) translate(0);
+  -o-transform: rotate(0) translate(0);
+  transform: rotate(0) translate(0);
+}
+/*-----*/
+
+.outer:active .inner {
+  -webkit-transform: rotate(0) translate(0) scale(0.9);
+  -moz-transform: rotate(0) translate(0) scale(0.9);
+  -ms-transform: rotate(0) translate(0) scale(0.9);
+  -o-transform: rotate(0) translate(0) scale(0.9);
+  transform: rotate(0) translate(0) scale(0.9);
+}
+.outer:active .front .date {
+  -webkit-transform: scale(2);
+}
+.outer:active .front .day,
+.outer:active .front .month {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.outer:active .right {
+  -webkit-transform: rotate(-5deg) translateX(80px) scale(0.9);
+  -moz-transform: rotate(-5deg) translateX(80px) scale(0.9);
+  -ms-transform: rotate(-5deg) translateX(80px) scale(0.9);
+  -o-transform: rotate(-5deg) translateX(80px) scale(0.9);
+  transform: rotate(-5deg) translateX(80px) scale(0.9);
+}
+.outer:active .left {
+  -webkit-transform: rotate(5deg) translateX(-80px) scale(0.9);
+  -moz-transform: rotate(5deg) translateX(-80px) scale(0.9);
+  -ms-transform: rotate(5deg) translateX(-80px) scale(0.9);
+  -o-transform: rotate(5deg) translateX(-80px) scale(0.9);
+  transform: rotate(5deg) translateX(-80px) scale(0.9);
+}
+/*-----*/
+
+.outer:active .calendarMain {
+  -webkit-transform: scale(1.8);
+  opacity: 0;
+  visibility: hidden;
+}
+.outer:active .clock {
+  -webkit-transform: scale(1.4);
+  opacity: 1;
+  visibility: visible;
+}
+.outer:active .calendarNormal {
+  bottom: -30px;
+  opacity: 1;
+  visibility: visible;
+}
+.outer:active .year {
+  top: -30px;
+  opacity: 1;
+  visibility: visible;
+  letter-spacing: 3px;
+}
+/*-----*/
+
+.calendarMain {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+}
+.month,
+.day {
+  font-size: 10px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.date {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+/*-----*/
+
+.clock {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-size: 40px;
+  line-height: 100px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+/*-----*/
+
+.year {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  color: #000000;
+}
+.calendarNormal {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+.date2 {
+  color: #8a720b;
+}
+.day2 {
+  color: #8b83c7;
+}
+.month2 {
+  color: #80c1d1;
+}
+
+.btnclock {
+  font-family: "CoolRegularScript", serif;
+  padding: 10px 22px;
+  background: #ffffff;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #caf6e5;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  transition: 0.25s ease;
+}
+
+.btnclock:hover {
+  background: #defcf0;
+  border-color: #caf6e5;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.18);
+}
+
+.btnclock:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
 }

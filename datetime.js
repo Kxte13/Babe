@@ -1,36 +1,3 @@
-// window.addEventListener("DOMContentLoaded", () => {
-const lastDate = new Date(2025, 10, 17, 0, 0, 0);
-
-function updateTime() {
-  const now = new Date();
-  let diffMs = now - lastDate;
-
-  if (diffMs < 0) {
-    document.getElementById("time").textContent = "Not yet started";
-    return;
-  }
-
-  let totalSeconds = Math.floor(diffMs / 1000);
-
-  const days = Math.floor(totalSeconds / (24 * 3600));
-  totalSeconds %= 24 * 3600;
-
-  const hours = Math.floor(totalSeconds / 3600);
-  totalSeconds %= 3600;
-
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-
-  document.getElementById("time").innerHTML =
-    `<span class="num days">${days}</span><span class="label">天</span> ` +
-    `<span class="num hours">${hours}</span><span class="label">小時</span> ` +
-    `<span class="num minutes">${minutes}</span><span class="label">分鐘</span> ` +
-    `<span class="num seconds">${seconds}</span><span class="label">秒鐘</span>`;
-}
-
-updateTime(); // เรียกครั้งแรก
-setInterval(updateTime, 1000); // อัปเดตทุกวินาที
-
 let timer = null;
 let hideTimeout = null;
 
@@ -140,4 +107,86 @@ window.onload = () => {
     startCountdown(savedDate);
   }
 };
-// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let mode = "clock"; // ค่าเริ่มต้นคือโหมดเวลา
+  let intervalClock = null;
+  let intervalCount = null;
+
+  const startDate = new Date(2025, 10, 17, 0, 0, 0);
+
+  function set(sel, value) {
+    document.querySelectorAll(sel).forEach((e) => (e.textContent = value));
+  }
+
+  // -------------------------------
+  // ฟังก์ชันเวลาแบบปกติ
+  // -------------------------------
+  function startClock() {
+    clearInterval(intervalCount);
+
+    intervalClock = setInterval(() => {
+      const now = new Date();
+
+      set(".year span", now.getFullYear());
+      set(".month span", now.toLocaleString("zh-TW", { month: "long" }));
+      set(".month2 span", now.toLocaleString("zh-TW", { month: "long" }));
+      set(".date span", now.getDate());
+      set(".date2 span", now.getDate());
+      set(".day span", now.toLocaleString("zh-TW", { weekday: "long" }));
+      set(".day2 span", now.toLocaleString("zh-TW", { weekday: "long" }));
+
+      set(".hour span", String(now.getHours()).padStart(2, "0"));
+      set(".minute span", String(now.getMinutes()).padStart(2, "0"));
+      set(".second span", String(now.getSeconds()).padStart(2, "0"));
+    }, 1000);
+  }
+
+  // -------------------------------
+  // ฟังก์ชัน Count
+  // -------------------------------
+  function startCount() {
+    clearInterval(intervalClock);
+
+    intervalCount = setInterval(() => {
+      const now = new Date();
+      let diff = Math.floor((now - startDate) / 1000);
+
+      if (diff < 0) diff = 0;
+
+      const days = Math.floor(diff / 86400);
+      const hours = Math.floor((diff % 86400) / 3600);
+      const minutes = Math.floor((diff % 3600) / 60);
+      const seconds = diff % 60;
+
+      // ตั้งค่าตามที่ต้องการให้แสดงแบบในรูป
+      set(".year span", "寶寶 愛你喲");
+      set(".month span", "愛你💗");
+      set(".day span", "天");
+
+      set(".date span", days);
+      set(".hour span", hours);
+      set(".minute span", minutes);
+      set(".second span", seconds);
+      set(".date2 span", "分鐘");
+      set(".month2 span", "秒");
+      set(".day2 span", "小時");
+    }, 1000);
+  }
+
+  // -------------------------------
+  // ปุ่มสลับโหมด
+  // -------------------------------
+  document.getElementById("btnClock").onclick = () => {
+    mode = "clock";
+    startClock();
+  };
+
+  document.getElementById("btnCount").onclick = () => {
+    mode = "count";
+    startCount();
+  };
+
+  // เริ่มต้นเป็นโหมดเวลา
+  startClock();
+});
