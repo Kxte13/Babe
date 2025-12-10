@@ -3,32 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../datetime.css" />
     <title>Heart Glow Picker</title>
 
     <style>
       body {
         margin: 0;
         padding: 0;
-        font-family: "Prompt", sans-serif;
+        font-family: "CoolRegularScript", serif;
         background: #fbe9f1;
         display: flex;
         height: 100vh;
         overflow: hidden;
       }
+      @font-face {
+        font-family: "CoolRegularScript";
+        src: url("../font/font1.ttf") format("truetype");
+      }
+      .text-panel {
+        position: fixed;
+        top: 3%;
+        left: 30%;
+        font-size: 40px;
+        font-weight: 600px;
+      }
 
       /* --- Sidebar Buttons --- */
       .left-panel {
-        width: 150px;
-        padding: 20px;
+        position: fixed;
+        top: 10%;
+        width: 40%;
+        left: 25%;
         display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
+        flex-direction: row;
+        gap: 10%;
       }
 
       .btn {
-        width: 100px;
+        width: 150%;
         padding: 12px 0;
         border-radius: 12px;
         color: white;
@@ -174,11 +186,148 @@
   </head>
 
   <body>
+    <div class="btnplace">
+      <button class="btnclock" id="btnClock">今天</button>
+      <button class="btnclock" id="btnCount">我們在一起第</button>
+    </div>
+    <div class="content">
+      <div class="signboard outer">
+        <div class="signboard front inner anim04c">
+          <li class="year anim04c">
+            <span></span>
+          </li>
+          <ul class="calendarMain anim04c">
+            <li class="month anim04c">
+              <span></span>
+            </li>
+            <li class="date anim04c">
+              <span></span>
+            </li>
+            <li class="day anim04c">
+              <span></span>
+            </li>
+          </ul>
+          <li class="clock minute anim04c">
+            <span></span>
+          </li>
+          <li class="calendarNormal date2 anim04c">
+            <span></span>
+          </li>
+        </div>
+        <div class="signboard left inner anim04c">
+          <li class="clock hour anim04c">
+            <span></span>
+          </li>
+          <li class="calendarNormal day2 anim04c">
+            <span></span>
+          </li>
+        </div>
+        <div class="signboard right inner anim04c">
+          <li class="clock second anim04c">
+            <span></span>
+          </li>
+          <li class="calendarNormal month2 anim04c">
+            <span></span>
+          </li>
+        </div>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <h2 id="titleDisplay">倒數計時名稱 ⏳✨</h2>
+      <div class="timeRow">
+        <h2 id="countdownText" style="margin-top: 10px">--:--:--</h2>
+
+        <button
+          id="toggleBtn"
+          style="
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 8px;
+            background: url('../img/count.png') no-repeat center/contain;
+            cursor: pointer;
+          "
+        ></button>
+      </div>
+
+      <!-- ส่วนนี้จะถูกซ่อน -->
+      <div
+        id="configBox"
+        style="
+          margin-top: 15px;
+          padding: 15px;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          background: #fff;
+          display: none;
+          transition: 0.3s;
+        "
+      >
+        <input
+          type="text"
+          id="titleInput"
+          placeholder="倒數計時名稱..."
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-bottom: 10px;
+            display: block;
+          "
+        />
+
+        <input
+          type="date"
+          id="datePicker"
+          style="
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            display: block;
+            margin-bottom: 10px;
+          "
+        />
+
+        <button
+          id="setBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #eb8abb;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          儲存 💾
+        </button>
+        <button
+          id="resetBtn"
+          style="
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6b6b;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          重設 🔄
+        </button>
+      </div>
+    </div>
+    <div class="text-panel">寶寶</div>
     <!-- Left Buttons -->
     <div class="left-panel">
-      <button class="btn btn-red" onclick="pickColor('red')">แดง</button>
-      <button class="btn btn-blue" onclick="pickColor('blue')">ฟ้า</button>
-      <button class="btn btn-green" onclick="pickColor('green')">เขียว</button>
+      <button class="btn btn-red" onclick="pickColor('red')">
+        我愛你因為...
+      </button>
+      <button class="btn btn-blue" onclick="pickColor('blue')">
+        你難過嗎？你試著打開看看阿
+      </button>
+      <button class="btn btn-green" onclick="pickColor('green')">隨機</button>
     </div>
 
     <!-- Circle -->
@@ -188,7 +337,7 @@
 
     <!-- Jar Panel -->
     <div class="right-panel">
-      <div class="jar-title">💌 ข้อความย้อนหลัง</div>
+      <div class="jar-title">💌 保存訊息記錄</div>
       <div class="jar-list" id="jarList"></div>
     </div>
 
@@ -199,8 +348,12 @@
         <button class="close-btn" onclick="closePopup()">ปิด</button>
       </div>
     </div>
+    <div id="loader">
+      <div class="heart-loader"></div>
+    </div>
 
-    <script src="texts.js"></script>
+    <script src="../datetime.js"></script>
+    <script src="../mail/texts.js"></script>
 
     <script>
       /* ใช้เฉพาะจำนวนข้อความสีแดง */
