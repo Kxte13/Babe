@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Picture Choice + Message</title>
+    <title>Picture Choice Random 10 from 20</title>
     <style>
       body {
         background: #f7c9d8;
@@ -65,6 +65,24 @@
         color: #b30044;
         white-space: pre-line;
       }
+
+      #restartBtn {
+        margin-top: 25px;
+        padding: 12px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #ff6fa5;
+        color: white;
+        cursor: pointer;
+        display: none;
+        transition: 0.2s;
+      }
+
+      #restartBtn:hover {
+        background: #ff4f8b;
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body>
@@ -84,88 +102,64 @@
     </div>
 
     <div id="result"></div>
+    <button id="restartBtn" onclick="restart()">เริ่มใหม่</button>
 
     <script>
       // ===============================
-      //     รูป + ข้อความของรูปนั้น
+      //     รูปทั้งหมด 20 รูป + ข้อความ
       // ===============================
-      const allPics = [
-        {
-          img: "https://picsum.photos/300?random=1",
-          msg: "ข้อความของรูปที่ 1",
-        },
-        {
-          img: "https://picsum.photos/300?random=2",
-          msg: "ข้อความของรูปที่ 2",
-        },
-        {
-          img: "https://picsum.photos/300?random=3",
-          msg: "ข้อความของรูปที่ 3",
-        },
-        {
-          img: "https://picsum.photos/300?random=4",
-          msg: "ข้อความของรูปที่ 4",
-        },
-        {
-          img: "https://picsum.photos/300?random=5",
-          msg: "ข้อความของรูปที่ 5",
-        },
-        {
-          img: "https://picsum.photos/300?random=6",
-          msg: "ข้อความของรูปที่ 6",
-        },
-        {
-          img: "https://picsum.photos/300?random=7",
-          msg: "ข้อความของรูปที่ 7",
-        },
-        {
-          img: "https://picsum.photos/300?random=8",
-          msg: "ข้อความของรูปที่ 8",
-        },
-        {
-          img: "https://picsum.photos/300?random=9",
-          msg: "ข้อความของรูปที่ 9",
-        },
-        {
-          img: "https://picsum.photos/300?random=10",
-          msg: "ข้อความของรูปที่ 10",
-        },
-      ];
+      const masterPics = Array.from({ length: 20 }, (_, i) => ({
+        img: `https://picsum.photos/300?random=${i + 1}`,
+        msg: `ข้อความของรูปที่ ${i + 1}`,
+      }));
 
-      let used = 2; // รูปที่ใช้ไปแล้ว index = 0,1
+      let selectedSet = []; // 10 รูปที่สุ่มมารอบนี้
+      let used = 0; // index รูปที่ใช้ไปแล้ว
 
-      // โหลดภาพแรกสองภาพ
-      document.getElementById("img0").src = allPics[0].img;
-      document.getElementById("img1").src = allPics[1].img;
+      function startGame() {
+        // สุ่มรูป 10 จาก 20
+        selectedSet = masterPics.sort(() => Math.random() - 0.5).slice(0, 10);
 
-      // ฟังก์ชันเมื่อเลือกรูป
+        used = 2;
+
+        // โหลดรูปเริ่มต้น
+        document.getElementById("img0").src = selectedSet[0].img;
+        document.getElementById("img1").src = selectedSet[1].img;
+
+        document.getElementById("topImg").src = "";
+        document.getElementById("result").innerText = "";
+        document.getElementById("restartBtn").style.display = "none";
+      }
+
+      startGame();
+
       function choosePic(index) {
-        // แสดงรูปบนสุด
-        document.getElementById("topImg").src = document.getElementById(
-          "img" + index
-        ).src;
+        const selectedSrc = document.getElementById("img" + index).src;
+        document.getElementById("topImg").src = selectedSrc;
 
-        // หา object ของรูปที่เลือก
-        const selectedObj = allPics.find(
-          (p) => p.img === document.getElementById("img" + index).src
-        );
+        const selectedObj = selectedSet.find((p) => p.img === selectedSrc);
 
-        // ถ้ารูปหมดให้แสดงข้อความสุดท้ายด้วย
-        if (used >= allPics.length) {
+        // ถ้ารูปหมดแล้ว
+        if (used >= selectedSet.length) {
           document.getElementById("result").innerText =
             "รูปสุดท้ายที่คุณเลือกคือ:\n" +
             selectedObj.img +
             "\n\nข้อความของรูปนั้น:\n" +
             selectedObj.msg;
+
+          document.getElementById("restartBtn").style.display = "inline-block";
           return;
         }
 
-        // เปลี่ยนเฉพาะรูปที่ไม่ได้ถูกเลือก
+        // เปลี่ยนรูปเฉพาะใบที่ไม่ถูกเลือก
         const other = index === 0 ? 1 : 0;
-
-        document.getElementById("img" + other).src = allPics[used].img;
+        document.getElementById("img" + other).src = selectedSet[used].img;
 
         used++;
+      }
+
+      function restart() {
+        startGame();
       }
     </script>
   </body>
