@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "CoolRegularScript";
+  src: url("../font/font1.ttf") format("truetype");
+}
+body {
+  background: #f7c9d8;
+  text-align: center;
+  padding: 30px;
+}
