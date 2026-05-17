@@ -16,7 +16,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (pwInput.value === "021125") {
     localStorage.setItem("authenticated", "true");
-    window.location.href = "../menu/menu.html";
+    window.location.href = "menu/menu.html";
   } else {
     popup.style.display = "flex";
     pwInput.value = "";
